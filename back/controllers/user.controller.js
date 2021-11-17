@@ -174,7 +174,46 @@ exports.updateOneUser = (req, res) => {
   const { username } = req.params;
 
   console.log(req)
+
+  // let billetToUpdate = {
+  //   one: {
+  //     ...req.body,
+  //     artwork: req.file ? req.file.filename : (req.body.artwork ? req.body.artwork : null),
+  //     path: slugify(req.body.titre),
+  //   },
+  //   bid
+  // }
+  // updateOneBillet
+  // User.updateOneBillet(billetToUpdate, (err, data) => {
+  //   if (err) {
+  //     if (err.kind === "not_found") {
+  //       res.status(404).send({
+  //         message: `Not found article with id ${req.body.titre}.`
+  //       });
+  //     } else {
+  //       res.status(500).send({
+  //         message: `Error retrieving article with id ${req.body.titre}.`
+  //       });
+  //     }
+  //   } else res.send(data);
+  // });
+
+
+  // // getOneBilletById
+  // User.getOne(req.params.username, (err, data) => {
+  //   if (err) {
+  //     if (err.kind === "not_found") {
+  //       res.status(404).send({
+  //         message: `Not found user with uid ${req.params.username}.`
+  //       });
+  //     } else {
+  //       res.status(500).send({
+  //         message: `Error retrieving user with uid ${req.params.username}.`
+  //       });
+  //     }
+  //   } else res.send(data);
+  // });
 };
 
-
+// deleteOneUser
 exports.desactiveOneUser = (req, res) => {};

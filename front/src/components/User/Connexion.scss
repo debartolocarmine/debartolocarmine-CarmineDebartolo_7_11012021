@@ -1,0 +1,48 @@
+.app-login {
+  margin: 30px 0;
+  label {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+    font-size: .8rem;
+    font-weight: 800;
+  }
+
+  .fm-gr {
+    margin-bottom: 20px;
+  }
+
+  input[type="email"],
+  input[type="submit"],
+  input[type="password"],
+  input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+  }
+  
+  input[type="file"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  input[type="submit"] {
+    background-color: rgb(206, 206, 206);
+    color: black;
+  }
+}

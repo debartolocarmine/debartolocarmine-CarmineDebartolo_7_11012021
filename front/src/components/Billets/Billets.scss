@@ -1,0 +1,30 @@
+.app-main {
+  .app-main-wrapper {
+    .app-navbar {}
+    .container-wrapper {
+
+      .container-wall {
+        flex: 0 1 calc(70% - 10px);
+      }
+      .container-sidebar {
+        flex: 0 1 30%;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        padding: 0px;
+        position: relative;
+        height: 300vh;
+        margin-top: 10px;
+        .sticky-sidebar {
+          position: sticky;
+          top: 10px;
+          .block {
+            background-color: #ccc;
+            margin-bottom: 10px;
+            background-color: rgb(228, 228, 228);
+            border-radius: 4px;;
+          }
+        }
+      }
+    }
+  }
+}

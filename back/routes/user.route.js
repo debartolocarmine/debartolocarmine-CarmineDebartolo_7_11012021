@@ -1,4 +1,4 @@
-  // LIB
+// LIB
 const express = require("express");
 const router = express.Router()
 // Controleur
@@ -16,8 +16,6 @@ router.get("/profile/:username", userCtrl.profile);
 router.post("/profile/:username/edition", userCtrl.updateOneUser);
 // Deconnecte un UTILISATEUR
 router.get("/deconnexion", userCtrl.logout);
-// Vérifie l'UTILISATEUR courant
-router.get("/tell-me-a-word", auth, userCtrl.tellMeAuth);
 // requete tous les UTILISATEURS
 router.get("/all-users", userCtrl.loadAllUser);
 // Mettre à jour un UTILISATEUR
@@ -26,6 +24,3 @@ router.get("/all-users", userCtrl.loadAllUser);
 router.post("/desactive", userCtrl.desactiveOneUser);
 module.exports = router;
 
-
-// const validatorEmail = require("../middleware/validator-email")
-// const validatorPassword = require("../middleware/validator-password")

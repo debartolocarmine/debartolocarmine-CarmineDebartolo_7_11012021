@@ -58,4 +58,4 @@ server.on('listening', () => {
 });
 
 // Je configure le serveur pour qu'il écoute
-server.listen(port); 
+server.listen(port);

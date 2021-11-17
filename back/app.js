@@ -6,6 +6,9 @@ const path = require('path');
 var helmet = require('helmet');
 // Variable d'environnement
 require('dotenv').config();
+// Route
+const userRoute = require("./routes/user.route");
+const billetRoute = require("./routes/billetRevue.route");
 
 // Constante app = mon application express
 const app = express();
@@ -30,9 +33,13 @@ app.use((req, res, next) => {
 // Cette méthode est appelée en tant que middleware dans votre application à l'aide du code :app.use(express.json()).
 app.use(express.json());
 
-
+// Store route
+// j'enregristre les routes pour la création des utilisateurs
+app.use('/api/user', userRoute);
 // j'enregristre les routes pour la création des images
 app.use('/images', express.static(path.join(__dirname, 'images')));
+// j'enregristre les routes pour la création de billets
+app.use('/api/billets', billetRoute)
 
 // j'exporte mon application express pour povoir y accéder depuis les autre fichiers du projet, notamment le serveur Node.
 module.exports = app;
@@ -47,4 +54,4 @@ module.exports = app;
 // Un environnement d'exécution ou runtime est un logiciel responsable de l'exécution des programmes informatiques écrits dans un langage de programmation donné.
 // Contrairement à un logiciel de développement permettant de programmer et développer son application, un runtime ne permet que l'exécution d'un programme.
 
-// 
+//
