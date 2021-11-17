@@ -26,6 +26,10 @@ ASK_TOKEN=<choose-hard-token>
 ```
 
 
+## Backend
+
+Consulter le */backend/README.md* à la racine du dossier backend pour plus d'information.
+
 ### installer le Backend
 
 ```json
@@ -55,6 +59,37 @@ npm install
 
 ### Démarrer le backend
 nodemon est utilisé pour ne pas relancer le serveur à chaque modification de celui-ci.
+
+```bash
+nodemon
+```
+
+
+## Frontend
+
+Consulter le */frontend/README.md* à la racine du dossier **frontend** pour plus d'information.
+
+
+### installer le Frontend
+
+```json
+"dependencies": {
+  "axios": "^0.24.0",
+  "react": "^17.0.2",
+  "react-bootstrap-icons": "^1.6.1",
+  "react-dom": "^17.0.2",
+  "react-router-dom": "^5.3.0",
+  "react-scripts": "4.0.3",
+  "sass": "^1.43.4",
+}
+```
+
+```bash
+cd frontend
+npm install
+```
+
+### Démarrer le Frontend
 
 ```bash
 npm start
