@@ -17,8 +17,8 @@ class BilletAdd extends Component {
       query_base : '/billets',
       help: null,
       mediaType: false,
-      typePreview: null,
-      titre: '',
+      typePreview: 'image',
+      titre: 'Ajouter un status',
       video: '',
       file : '',
       videoPreview: null,
@@ -174,7 +174,9 @@ class BilletAdd extends Component {
           <div className="add-form-text">
             {/* Element textarea pour receuillir le text */}
             {/* Celui-ci est enregistré dans le state titre avec la fonction handleChange() */}
-            <textarea placeholder="Ajouter un status" value={titre} name="titre" maxLength="255" required onChange={this.handleChange} />
+           <label >
+            <textarea  value={titre} name="titre" maxLength="255" required onChange={this.handleChange} />  
+           </label>
           </div>
           <div className="add-form-btns">
             {/* VIDEO */}
@@ -200,7 +202,9 @@ class BilletAdd extends Component {
                 {/* BTN IMAGE */}
                 {/* Le champs image est dissimulé derrière le bouton image  */}
                 <li className="add-btn-media-img btns bi bi-image">
-                  <input className="img-upload" type="file" name="file" onChange={this.handlerImage}/>
+                  <label>
+                    <input className="img-upload" type="file" name="file" onChange={this.handlerImage}/>
+                  </label>
                 </li>
                 {/* BTN QUOTE */}
                 {/* <li className="btns" onClick={e => this.handleMedia(e, 'quote')}><i className="bi bi-quote"></i></li> */}
