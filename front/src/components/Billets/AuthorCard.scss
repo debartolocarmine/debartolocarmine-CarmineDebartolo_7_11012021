@@ -1,0 +1,28 @@
+.author-card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    .author-card-icon {
+      background-color: #cccccc;
+      border-radius:50px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+    }
+    .author-card-name  {
+      font-size: 0.9rem;
+    }
+    strong{
+      &.author-card-name  {
+         margin-left: 4px;
+      }
+    }
+    .author-card-created {
+      font-size: .7rem;
+    }
+  }

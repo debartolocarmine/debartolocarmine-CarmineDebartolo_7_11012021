@@ -6,6 +6,7 @@ import { getBaseApi, getCurrentUserUid, getUserSession, getTimeAgo } from '../Ut
 // PLAYER VIDEO
 import PlayerVideo from '../Utils/PlayerVideo';
 // ADD OR UPDATE FORM
+import AuthorCard from './AuthorCard'
 import BilletAdd from './BilletAdd';
 
 import './BilletCard.scss';
@@ -16,7 +17,7 @@ class BilletCard extends Component {
     this.state = {
       onEdit : false,
       onDelete : false,
-      onComment: false,
+
       onLike: false,
       titre: '',
       file: '',
@@ -74,7 +75,7 @@ class BilletCard extends Component {
         this.props.updateData(billet.bid, 'remove');
       });
 
-    }else if(action === 'cancel'){
+    }else if(action === 'concel'){
       this.setState({ onDelete: false });
     }
     
@@ -112,7 +113,7 @@ class BilletCard extends Component {
         }
         {!onEdit &&
           <div className="card-wrapper">
-            <div>{nom}{prenom}{getTimeAgo(created)}</div>
+            <AuthorCard author={{nom, prenom, created: getTimeAgo(created)}}/>
             <h2>{titre}</h2>
             { video && video !== '' && video !== 'null' &&
               <PlayerVideo video_url={video}/>
@@ -134,7 +135,6 @@ class BilletCard extends Component {
                 </ul>
               }
             </ul>
-          
           </div>
         }
       </div>

@@ -65,7 +65,6 @@ class BilletAdd extends Component {
   handlerImage = (e) => {
     // Traitement du champs image
     if (e.target && e.target.files && e.target.files[0]) {
-      console.log(e.target.files[0])
       this.setState({ imagePreview:URL.createObjectURL(e.target.files[0]), typePreview: 'image', file: e.target.files[0], video: '', mediaType: null});
     }
   }
@@ -79,7 +78,7 @@ class BilletAdd extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log('hello')
+    
     e.preventDefault();
     // Information nouveau billet
     let {titre, file, video, typePreview, query_base, query_type, imagePreview} = this.state
@@ -100,7 +99,6 @@ class BilletAdd extends Component {
       if (typePreview === 'image' && file && file !== "") {
         formData.append("billets_img", file);
       }
-      
       if (typePreview === 'image' && file === "" && imagePreview) {
         let splitImag = imagePreview.split("/images/");
         formData.append("artwork", splitImag[1]);
@@ -121,7 +119,6 @@ class BilletAdd extends Component {
           'Authorization': 'bear ' + getUserSession()
         }
       }).then(result => {
-        console.log('nooooooo', result)
         // On réinitialise à null ou vide les states
         this.setState({ imagePreview: null, videoPreview: null, typePreview: null, file: '', titre: '', video: '', mediaType: null });
 
@@ -143,7 +140,7 @@ class BilletAdd extends Component {
         // On les passe au component parent @see /Revue/Revue, pour l'affichage dans la liste 
         this.props.handleSbmtData(itemToReturn, 'add')
       }).catch(e =>{
-        // console.log(e)
+        console.log(e)
       })
     }
     
@@ -178,7 +175,6 @@ class BilletAdd extends Component {
             {/* Element textarea pour receuillir le text */}
             {/* Celui-ci est enregistré dans le state titre avec la fonction handleChange() */}
             <textarea placeholder="Ajouter un status" value={titre} name="titre" maxLength="255" required onChange={this.handleChange} />
-            <div>{total_titre} sur 255</div>
           </div>
           <div className="add-form-btns">
             {/* VIDEO */}
@@ -197,6 +193,8 @@ class BilletAdd extends Component {
             {/* le menu de soumission du billet est caché lorsqu'on selectionne une video  */}
             {mediaType !== 'video' &&
               <ul className="add-media-ul">
+                {/* Count caractere */}
+                <li className="btns btn-count">{total_titre} sur 255</li>
                 {/* BTN VIDEO */}
                 <li className="btns" onClick={e => this.handleMedia(e, 'video')}><i className="bi bi-youtube"></i></li>
                 {/* BTN IMAGE */}
@@ -205,7 +203,7 @@ class BilletAdd extends Component {
                   <input className="img-upload" type="file" name="file" onChange={this.handlerImage}/>
                 </li>
                 {/* BTN QUOTE */}
-                <li className="btns" onClick={e => this.handleMedia(e, 'quote')}><i className="bi bi-quote"></i></li>
+                {/* <li className="btns" onClick={e => this.handleMedia(e, 'quote')}><i className="bi bi-quote"></i></li> */}
                 {/* BTN SUBMIT */}
                 <li className="btns-sub"><input type="submit" value="Envoyer" /></li>
               </ul>

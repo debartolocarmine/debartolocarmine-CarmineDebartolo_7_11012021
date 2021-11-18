@@ -1,7 +1,7 @@
-
 // LIB
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // COMPONENT
 import BilletAdd from './BilletAdd'
 import BilletCard from './BilletCard'
@@ -12,7 +12,6 @@ import { getBaseApi, getUserSession, insertItem, removeItem, getIndexBillet } fr
 import './Billets.scss'
 
 class Billets extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -28,17 +27,17 @@ class Billets extends Component {
 
     // Load Billets
     const BILLET_QUERY = '/billets';
-
     axios.get(getBaseApi() + BILLET_QUERY,  {
       headers: {
         'Authorization': 'bear ' + getUserSession()
       }
     }).then(res => {
-
-      this.setState({
-        isLoaded: true,
-        items: res.data
-      });
+      if (res && res.data && res.data && Array.isArray(res.data) && res.data.length > 0) {
+        this.setState({
+          isLoaded: true,
+          items: res.data
+        });
+      }
       
     }).catch((e) =>{
       // Il semble que le token n'est plus à jour
@@ -47,17 +46,19 @@ class Billets extends Component {
 
     // Load Billets
     const USERS_QUERY = '/user/all-users';
-    console.log(getBaseApi() + USERS_QUERY)
+
     axios.get(getBaseApi() + USERS_QUERY,  {
       headers: {
         'Authorization': 'bear ' + getUserSession()
       }
     }).then(res => {
       console.log(res)
-      this.setState({
-        isLoaded: true,
-        users: res.data
-      });
+      if (res && res.data && res.data && Array.isArray(res.data) && res.data.length > 0) {
+        this.setState({
+          isLoaded: true,
+          users: res.data
+        });
+      }
     }).catch((e) =>{
       // Il semble que le token n'est plus à jour
     })
@@ -102,7 +103,7 @@ class Billets extends Component {
   render() {
     
     // On récupere les states
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, users } = this.state;
     // Si la reqiête renvoie une erreur
     if (error) {
       return <div className="container">Erreur : {error.message}</div>;
@@ -121,17 +122,60 @@ class Billets extends Component {
         <div className="container-wrapper">
           <main className="container-wall">
             {this.showFormAdd()}
-            {items.map((item)=>{
-              return (
-                <BilletCard 
-                  key={item.bid} 
-                  item={item}
-                  updateData={this.handleSbmtData}
-                  query_action={'add'}
-                />
-            );})}
+            { items && 
+              items.map((item)=>{
+                return (
+                  <BilletCard 
+                    key={item.bid} 
+                    item={item}
+                    updateData={this.handleSbmtData}
+                    query_action={'add'}
+                  />
+              );})
+            }
           </main>
-          
+          <aside className="container-sidebar">
+            <div className="sticky-sidebar">
+              {/* Block collaborateur  */}
+              <div className="block">
+                <h2>Collaborateurs</h2>
+                <ul>
+                  { users && 
+                    users.map((user)=>{
+                      return (
+                        <li key={user.uid}>
+                          <Link to={`/user/${user.username}`} className="nav-link" alt="Profile" title="Profile"><span>{user.prenom}</span><span>{user.nom}</span></Link>
+                        </li>
+                    );})
+                  }
+                </ul>
+              </div>
+              {/* Block les meilleurs commentaires  */}
+              <div className="block">
+                <h2>Les dernières réactions</h2>
+                <ul>
+                 <li>Réaction</li>
+                 <li>Réaction</li>
+                 <li>Réaction</li>
+                 <li>Réaction</li>
+                 <li>Réaction</li>
+                 <li>Réaction</li>
+                </ul>
+              </div>
+              {/* Block les billets les plus liker  */}
+              <div className="block">
+                <h2>Les billets les plus likés</h2>
+                <ul>
+                 <li>Article</li>
+                 <li>Article</li>
+                 <li>Article</li>
+                 <li>Article</li>
+                 <li>Article</li>
+                 <li>Article</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     );

@@ -2,25 +2,32 @@
   .app-main-wrapper {
     .app-navbar {}
     .container-wrapper {
-
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
       .container-wall {
-        flex: 0 1 calc(70% - 10px);
+        flex: 0 0 calc(70% - 10px);
+        @media (max-width: 768px) {flex: 0 0 calc(60% - 10px)}
+        @media (max-width: 600px) {flex: 1 1 100%;}
       }
       .container-sidebar {
-        flex: 0 1 30%;
+        flex: 0 0 30%;
+        @media (max-width: 768px) {flex: 0 0 40%;}
+        @media (max-width: 600px) {flex: 1 1 100%;}
         margin-bottom: 10px;
         border-radius: 4px;
         padding: 0px;
         position: relative;
-        height: 300vh;
+        height: auto;
         margin-top: 10px;
         .sticky-sidebar {
           position: sticky;
+          @media (max-width: 600px) {position: relative;}
           top: 10px;
           .block {
-            background-color: #ccc;
             margin-bottom: 10px;
-            background-color: rgb(228, 228, 228);
+            // background-color: rgb(228, 228, 228);
             border-radius: 4px;;
           }
         }
