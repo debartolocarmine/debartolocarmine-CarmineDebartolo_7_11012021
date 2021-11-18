@@ -1,7 +1,7 @@
-// Création d'un composant React
 import React, { Component } from 'react';
 import axios from 'axios';
-// Fonction qui renvoie l'url du serveur API
+
+
 import { getBaseApi } from '../Utils/Tools'
 
 class Connexion extends Component {
@@ -18,6 +18,8 @@ class Connexion extends Component {
 
   handleSubmit(event) {
     
+    // console.log(event.target.nom.value)
+    
     const DEFAULT_QUERY = '/user/login';
 
     let login = {
@@ -27,31 +29,31 @@ class Connexion extends Component {
 
     axios({
       method: 'post',
-      // Fonction qui renvoie l'url du serveur API + DEFAULT_QUERY = '/user/login'
       url: getBaseApi() + DEFAULT_QUERY,
       data: login,
     })
     .then(function (response) {
         //On traite la suite une fois la réponse obtenue 
-       
-        let user = {
-          prenom: response.data.user.prenom,
-          nom: response.data.user.nom,
-          roles: response.data.user.roles,
-          status: response.data.user.status,
-          uid: response.data.user.uid,
-          portrait: response.data.user.portrait,
-          username: response.data.user.username,
+        if (response && response.data) {
+          let user = {
+            prenom: response.data.user.prenom,
+            nom: response.data.user.nom,
+            roles: response.data.user.roles,
+            status: response.data.user.status,
+            uid: response.data.user.uid,
+            portrait: response.data.user.portrait,
+            username: response.data.user.username,
+          }
+          // On enregistre dans les localStorage le token et les information utilisateur
+          localStorage.setItem("bear", response.data.token);
+          localStorage.setItem("user", JSON.stringify(user));
+          window.location.href = "/";
         }
-
-        localStorage.setItem("bear", response.data.token);
-        localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "/";
-
+        
     })
     .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
-        console.log(erreur);
+        // console.log(erreur);
     });
 
     event.preventDefault();    
@@ -59,19 +61,21 @@ class Connexion extends Component {
 
   render() {
     return (
-      <div className="container">
-        
-        <form className="app-login app-connexion" onSubmit={this.handleSubmit}>
-          <label>
-            Email :
-            <input type="email" value={this.state.email} name="email" onChange={this.handleChange} required/>
-          </label>
-          <label>
-            Mot de passe :
-            <input type="password" value={this.state.password} name="password" onChange={this.handleChange} required/>
-          </label>
-          <input type="submit" value="Envoyer" />
-        </form>
+      <div className="user-container">
+         <div className="container">
+         <h1>Connexion</h1>
+          <form className="app-login app-connexion" onSubmit={this.handleSubmit}>
+            <label>
+              Couriel :
+              <input type="email" value={this.state.email} name="email" onChange={this.handleChange} required/>
+            </label>
+            <label>
+              Mot de passe :
+              <input type="password" value={this.state.password} name="password" onChange={this.handleChange} required/>
+            </label>
+            <input type="submit" value="Envoyer" />
+          </form>
+        </div>
       </div>
     );
   }

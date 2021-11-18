@@ -42,7 +42,16 @@
   }
 
   input[type="submit"] {
-    background-color: rgb(206, 206, 206);
-    color: black;
+    background-color: #19205a;
+    color: rgb(255, 255, 255);
+    margin-top : 15px;
+    &:hover {
+      background-color: #333e9a;
+    }
+  }
+  .msg-help-wrapper {
+    font-weight: 400;
+    line-height: 1;
+    color: rgb(76, 76, 76);
   }
 }
