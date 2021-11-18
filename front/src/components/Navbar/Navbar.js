@@ -47,7 +47,7 @@ class Navbar extends Component {
         <div className="app-navbar-bg">
           <div className="container">
             <ul className="app-navbar-wrapper">
-              <img src={logo} className="header-logo" alt="logo" />
+              <img src={logo} className="header-logo" alt="Groupomania logo" />
               { logged_user ? (
                 <ul className="app-navbar-wrapper">
                   <li className="app-navbar-user">
