@@ -1,10 +1,14 @@
-$primary : rgb(25, 32, 90);
+$primary : rgba(25, 32, 90, 0.738);
 $primary-link : #FFFFFF;
 $primary-link-hover : rgb(22, 28, 80);
+$link-red : #e64d40;
 
 .app-navbar {
-  background-color: $primary;
+  
   margin: 0;
+  .app-navbar-bg {
+    background-color: $primary;
+  }
   ul.app-navbar-wrapper{
     display: flex;
     align-items: center;
@@ -12,8 +16,8 @@ $primary-link-hover : rgb(22, 28, 80);
     flex-direction: row;
     align-content: center;
     .header-logo {
-      width: auto;
-      height: 75px;
+      width: 255px;
+      height: auto;
       overflow: hidden;
     }
     .app-navbar-user {
@@ -38,7 +42,7 @@ $primary-link-hover : rgb(22, 28, 80);
         color: $primary-link;
         text-decoration: none;
         &:hover {
-          background-color: $primary-link-hover;
+          background-color : $link-red;
         }
       }
     }
