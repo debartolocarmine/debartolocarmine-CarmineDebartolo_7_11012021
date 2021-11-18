@@ -6,6 +6,9 @@
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
+      h1.shodow{
+          display: none;
+      }
       .container-wall {
         flex: 0 0 calc(70% - 10px);
         @media (max-width: 768px) {flex: 0 0 calc(60% - 10px)}

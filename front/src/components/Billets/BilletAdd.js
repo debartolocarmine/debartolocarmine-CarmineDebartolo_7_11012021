@@ -65,7 +65,7 @@ class BilletAdd extends Component {
   handlerImage = (e) => {
     // Traitement du champs image
     if (e.target && e.target.files && e.target.files[0]) {
-      this.setState({ imagePreview:URL.createObjectURL(e.target.files[0]), typePreview: 'image', file: e.target.files[0], video: '', mediaType: null});
+      this.setState({ imagePreview:URL.createObjectURL(e.target.files[0]), typePreview: 'image', file: e.target.files[0], video: '', mediaType: ''});
     }
   }
 
@@ -174,7 +174,8 @@ class BilletAdd extends Component {
           <div className="add-form-text">
             {/* Element textarea pour receuillir le text */}
             {/* Celui-ci est enregistré dans le state titre avec la fonction handleChange() */}
-            <textarea placeholder="Ajouter un status" value={titre} name="titre" maxLength="255" required onChange={this.handleChange} />
+            <label htmlFor="textarea">.</label>
+            <textarea  placeholder="status"  id="textarea" value={titre} name="titre" maxLength="255" required onChange={this.handleChange} />  
           </div>
           <div className="add-form-btns">
             {/* VIDEO */}
@@ -200,7 +201,8 @@ class BilletAdd extends Component {
                 {/* BTN IMAGE */}
                 {/* Le champs image est dissimulé derrière le bouton image  */}
                 <li className="add-btn-media-img btns bi bi-image">
-                  <input className="img-upload" type="file" name="file" onChange={this.handlerImage}/>
+                <label htmlFor="image">.</label>
+                  <input className="img-upload" id="image" type="file" name="file" onChange={this.handlerImage}/> 
                 </li>
                 {/* BTN QUOTE */}
                 {/* <li className="btns" onClick={e => this.handleMedia(e, 'quote')}><i className="bi bi-quote"></i></li> */}

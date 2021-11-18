@@ -118,9 +118,11 @@ class Billets extends Component {
     }
     // Le rendu
     return (
+      
       <div className="container">
         <div className="container-wrapper">
-          <main className="container-wall">
+          <h1 className="shodow">réseau social d'entreprise</h1>
+          <main id="contenu-principal"className="container-wall">
             {this.showFormAdd()}
             { items && 
               items.map((item)=>{
