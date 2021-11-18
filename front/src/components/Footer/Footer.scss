@@ -1,11 +1,15 @@
-$primary : rgb(25, 32, 90);
+$primary : #e64e4078;
 $primary-link : #FFFFFF;
 $primary-link-hover : rgb(22, 28, 80);
-
+$link-red : red;
 .app-footer {
   background-color: $primary;
   margin: 0;
   min-height: 300px;
+  background-size: cover;
+  .app-footer-overlay {
+    background-color: $primary;
+  }
   .footer-credentials{
     display: flex;
     justify-content: center;
@@ -19,8 +23,10 @@ $primary-link-hover : rgb(22, 28, 80);
     justify-content: center;
     align-items: center;
     .header-logo {
-      height: 200px;
+      height: auto;
       overflow: hidden;
+      width: 300px;
+      margin: 50px;
     }
   }
   .app-footer-list {
@@ -51,13 +57,17 @@ $primary-link-hover : rgb(22, 28, 80);
           color: $primary-link;
           text-decoration: none;
           &:hover {
-            background-color: $primary-link-hover;
+            border-bottom: 4px solid $link-red;
           }
         }
         span.cd-i {
           margin-right: 10px;
         }
       }
+    }
+    .surlignement{
+      height: 20px;
+      border-bottom :1px solid red;
     }
   }
 }
