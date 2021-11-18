@@ -5,9 +5,12 @@ const router = express.Router()
 const userCtrl = require("../controllers/user.controller");
 // Controle permission des utilisateurs
 const auth = require("../middleware/auth.middleware");
+// validator
+const password_validator = require("../middleware/validator.password.middelware");
+const email_validator = require("../middleware/validator.email.middelware");
 // ROUTE
 // Enregistre un UTILISATEUR
-router.post("/sign-up", userCtrl.signup);
+router.post("/sign-up", password_validator, email_validator, userCtrl.signup);
 // Connecte un UTILISATEUR
 router.post("/login", userCtrl.login);
 // Deconnecte un UTILISATEUR

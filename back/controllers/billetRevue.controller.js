@@ -77,7 +77,6 @@ exports.createOneBillet = (req, res) => {
 
 // updateOne
 exports.updateOneBillet = (req, res) => {
-  console.log(req)
 
   const { bid } = req.params;
 
